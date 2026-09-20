@@ -1,0 +1,22 @@
+---
+const faqs = [
+  ['What kind of businesses do you work with?', 'We work with founder-led businesses and lean teams that have a strong offer but need a sharper path from potential to predictable growth.'],
+  ['How quickly can we get started?', 'Most engagements begin with a focused working session within two weeks. We leave that session with priorities, owners, and a practical next step.'],
+  ['Do you offer one-off projects?', 'Yes. Focus is designed as a contained project, while Momentum and Partner give teams ongoing support as the work compounds.'],
+];
+---
+
+<section class="bg-slate-50 px-6 py-24 lg:py-32">
+  <div class="mx-auto max-w-3xl">
+  <p class="text-center text-xs font-bold uppercase tracking-[.22em] text-slate-600">A few answers</p>
+  <h2 class="font-display mt-4 text-center text-4xl font-bold tracking-[-.03em]">Good questions lead to better work.</h2>
+  <div class="mt-10 space-y-3">
+    {faqs.map(([question, answer]) => (
+      <details class="group rounded-2xl border border-slate-200 bg-white px-6 py-5">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-5 font-display font-bold">{question}<span class="text-2xl font-normal text-slate-500 transition group-open:rotate-45">+</span></summary>
+        <p class="max-w-2xl pt-4 leading-7 text-ink/60">{answer}</p>
+      </details>
+    ))}
+  </div>
+  </div>
+</section>

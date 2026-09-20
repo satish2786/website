@@ -1,0 +1,97 @@
+<header class="sticky top-0 z-50 border-b border-ink/10 bg-[#edf4ff]/90 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+    <a href="#top" class="font-display text-xl font-bold tracking-tight">e<span class="text-teal">Publishing</span></a>
+    <details class="relative ml-auto mr-3 md:hidden">
+      <summary class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-ink/15 text-ink" aria-label="Open navigation menu">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </summary>
+      <nav class="absolute right-0 top-12 z-10 w-52 rounded-2xl border border-ink/10 bg-white p-3 text-sm font-semibold text-ink shadow-xl" aria-label="Mobile navigation">
+        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#products">Products</a>
+        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#epublishing">ePublishing</a>
+        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#services">Services</a>
+        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#support">Support</a>
+        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#contact">Contact Us</a>
+      </nav>
+    </details>
+    <nav class="hidden items-center gap-8 text-sm font-semibold text-ink/70 md:flex" aria-label="Main navigation">
+      <a class="transition hover:text-teal" href="#products">Products</a>
+      <a class="transition hover:text-teal" href="#epublishing">ePublishing</a>
+      <a class="transition hover:text-teal" href="#services">Services</a>
+      <a class="transition hover:text-teal" href="#support">Support</a>
+      <a class="transition hover:text-teal" href="#contact">Contact Us</a>
+      <button class="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-white transition hover:bg-emerald-600" type="button" data-chat-open>
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8m-8 4h5m7-2a8 8 0 0 1-8 8 8.8 8.8 0 0 1-3.6-.8L4 20l.8-4.4A8 8 0 1 1 20 12Z" />
+        </svg>
+        <span>Chat with us</span>
+      </button>
+    </nav>
+    <button class="inline-flex shrink-0 items-center gap-2 rounded-full bg-emerald-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-emerald-600 md:hidden" type="button" data-chat-open>
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8m-8 4h5m7-2a8 8 0 0 1-8 8 8.8 8.8 0 0 1-3.6-.8L4 20l.8-4.4A8 8 0 1 1 20 12Z" />
+      </svg>
+      <span>Chat with us</span>
+    </button>
+  </div>
+</header>
+
+<div class="fixed bottom-4 right-4 z-[60] sm:bottom-6 sm:right-6">
+  <div id="chat-popup" class="mb-4 hidden w-[min(20rem,calc(100vw-3rem))] rounded-2xl bg-white p-5 text-ink shadow-2xl ring-1 ring-ink/10" role="dialog" aria-modal="false" aria-labelledby="chat-popup-title">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[.18em] text-emerald-600">Live chat</p>
+        <h2 id="chat-popup-title" class="mt-1 text-xl font-bold">How can we help?</h2>
+      </div>
+      <button id="chat-close" class="rounded-full p-1 text-ink/50 transition hover:bg-slate-100 hover:text-ink" type="button" aria-label="Close chat window">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m6 6 12 12M6 18 18 6" />
+        </svg>
+      </button>
+    </div>
+    <form class="mt-4 space-y-3" name="chat-request" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="chat-request" />
+      <label class="sr-only" for="chat-name">Your name</label>
+      <input class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-emerald-500" id="chat-name" name="name" placeholder="Your name" required />
+      <label class="sr-only" for="chat-email">Your email</label>
+      <input class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-emerald-500" id="chat-email" name="email" type="email" placeholder="Your email" required />
+      <label class="sr-only" for="chat-message">How can we help?</label>
+      <textarea class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-emerald-500" id="chat-message" name="message" rows="3" placeholder="How can we help?" required></textarea>
+      <button class="w-full rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600" type="submit">Send message</button>
+    </form>
+  </div>
+
+  <button id="chat-launcher" class="group flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 transition hover:scale-105 hover:bg-emerald-600" type="button" aria-expanded="false" aria-controls="chat-popup" aria-label="Open chat window">
+    <svg class="h-7 w-7 transition group-hover:rotate-[-8deg]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8m-8 4h5m7-2a8 8 0 0 1-8 8 8.8 8.8 0 0 1-3.6-.8L4 20l.8-4.4A8 8 0 1 1 20 12Z" />
+    </svg>
+  </button>
+</div>
+
+<script>
+  const chatLauncher = document.querySelector('#chat-launcher');
+  const chatPopup = document.querySelector('#chat-popup');
+  const chatClose = document.querySelector('#chat-close');
+  const chatMenuButtons = document.querySelectorAll('[data-chat-open]');
+
+  const setChatVisibility = (isOpen: boolean) => {
+    chatPopup?.classList.toggle('hidden', !isOpen);
+    chatLauncher?.setAttribute('aria-expanded', String(isOpen));
+    chatLauncher?.setAttribute('aria-label', isOpen ? 'Close chat window' : 'Open chat window');
+  };
+
+  chatLauncher?.addEventListener('click', () => {
+    setChatVisibility(chatPopup?.classList.contains('hidden') ?? true);
+  });
+
+  chatMenuButtons.forEach((button) => {
+    button.addEventListener('click', () => setChatVisibility(true));
+  });
+
+  chatClose?.addEventListener('click', () => setChatVisibility(false));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setChatVisibility(false);
+  });
+</script>
