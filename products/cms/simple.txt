@@ -1,0 +1,6 @@
+Page and article editor
+Media library
+Draft and publish workflow
+Basic user accounts
+Category and tag management
+Search-friendly page structure

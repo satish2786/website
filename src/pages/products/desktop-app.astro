@@ -1,5 +1,41 @@
 ---
+import { existsSync, readdirSync, readFileSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
 import '../../styles/global.css';
+
+const tierDefinitions = [
+  { name: 'Basic', file: 'simple.txt', label: 'Starter', description: 'For straightforward daily operations' },
+  { name: 'Medium', file: 'medium.txt', label: 'Popular', description: 'For growing teams and locations' },
+  { name: 'Complex', file: 'complex.txt', label: 'Custom', description: 'For specialist and enterprise systems' },
+];
+
+const readTiers = (folder: string) => tierDefinitions.map((tier) => {
+  const rows = readFileSync(`${folder}${tier.file}`, 'utf8')
+    .split(/\r?\n/)
+    .map((feature: string) => feature.trim())
+    .filter(Boolean);
+
+  return {
+    ...tier,
+    features: rows.slice(0, -2),
+    cost: rows.at(-2)?.replace(/^Cost\s+/i, '') ?? '',
+    renewalCost: rows.at(-1)?.replace(/^Renewal cost\s+/i, '') ?? '',
+  };
+});
+
+const productsFolder = fileURLToPath(new URL('../../../products/', import.meta.url));
+const products = readdirSync(productsFolder, { withFileTypes: true })
+  .filter((entry: { isDirectory: () => boolean }) => entry.isDirectory())
+  .map((entry: { name: string }) => ({
+    folder: entry.name,
+    path: join(productsFolder, entry.name),
+  }))
+  .filter((product: { path: string }) => tierDefinitions.every((tier) => existsSync(join(product.path, tier.file))))
+  .map((product: { folder: string; path: string }) => ({
+    name: `${product.folder.replace(/[-_]+/g, ' ')} application`.replace(/\b\w/g, (letter) => letter.toUpperCase()),
+    tiers: readTiers(`${product.path}/`),
+  }));
 ---
 
 <html lang="en">
@@ -12,30 +48,54 @@ import '../../styles/global.css';
     <main class="mx-auto max-w-5xl px-6 py-16 lg:px-10">
       <a href="/" class="inline-flex items-center gap-2 text-sm font-semibold text-teal hover:text-ink">← Back to home</a>
 
-      <section class="mt-10 overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-xl shadow-ink/5">
+      <section class="mt-10 overflow-hidden rounded-4xl border border-ink/10 bg-white shadow-xl shadow-ink/5">
         <div class="bg-[#0b1220] px-8 py-10 text-white lg:px-12">
           <p class="text-xs font-bold uppercase tracking-[.2em] text-lime">Built for power users</p>
           <h1 class="mt-4 font-display text-4xl font-bold tracking-[-.04em] sm:text-6xl">Desktop App</h1>
         </div>
 
-        <div class="grid gap-8 px-8 py-10 lg:grid-cols-[1.15fr_.85fr] lg:px-12">
-          <div>
-            <p class="text-lg leading-8 text-ink/70">A robust desktop experience for teams that need speed, structure, and full control over their workflows.</p>
-            <p class="mt-6 text-base leading-8 text-ink/60">Our desktop app brings performance, visibility, and reliability into one streamlined workspace so teams can move faster without sacrificing clarity.</p>
-            <div class="mt-8 flex flex-wrap gap-4">
-              <a class="rounded-full bg-teal px-6 py-3 font-semibold text-white transition hover:bg-ink" href="#contact">Get the desktop app</a>
-              <a class="rounded-full border border-ink/15 px-6 py-3 font-semibold text-ink transition hover:border-teal hover:text-teal" href="/">View all products</a>
-            </div>
-          </div>
+        <div class="px-8 py-10 lg:px-12">
+          <div class="mt-12 space-y-14">
+            {products.map((product: (typeof products)[number]) => (
+              <div>
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <p class="text-xs font-bold uppercase tracking-[.2em] text-teal">Choose your build</p>
+                    <h2 class="mt-2 font-display text-3xl font-bold tracking-tight">{product.name}</h2>
+                  </div>
+                  <p class="max-w-sm text-sm leading-6 text-ink/60">Select the feature depth that matches your {product.name.toLowerCase()} workflow.</p>
+                </div>
 
-          <div class="rounded-[1.5rem] bg-[#edf4ff] p-6">
-            <p class="text-xs font-bold uppercase tracking-[.2em] text-teal">Included</p>
-            <ul class="mt-5 space-y-4 text-ink/75">
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-teal"></span><span>High-performance operations</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-teal"></span><span>Deep workflow visibility</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-teal"></span><span>Secure team collaboration</span></li>
-              <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-teal"></span><span>Tailored productivity tools</span></li>
-            </ul>
+                <div class="mt-6 grid gap-5 lg:grid-cols-3">
+                  {product.tiers.map((tier: (typeof product.tiers)[number]) => (
+              <article class:list={[
+                'flex flex-col rounded-2xl bg-white p-6 shadow-sm',
+                tier.name === 'Medium' ? 'border-2 border-teal' : 'border border-ink/10',
+              ]}>
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 class="font-display text-2xl font-bold">{tier.name}</h3>
+                    <p class="mt-1 text-sm text-ink/60">{tier.description}</p>
+                  </div>
+                  <span class:list={[
+                    'rounded-full px-3 py-1 text-xs font-bold',
+                    tier.name === 'Medium' ? 'bg-teal text-white' : 'bg-[#dce9ff] text-teal',
+                  ]}>{tier.label}</span>
+                </div>
+                <ul class="mt-6 flex-1 space-y-3 text-sm text-ink/75">
+                  {tier.features.map((feature: string) => (
+                    <li class="flex items-start gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal"></span><span>{feature}</span></li>
+                  ))}
+                </ul>
+                <div class="mt-5 border-t border-ink/10 pt-4 text-sm">
+                  <div class="flex items-center justify-between"><span class="text-ink/60">Cost</span><strong>{tier.cost}</strong></div>
+                  <div class="mt-2 flex items-center justify-between"><span class="text-ink/60">Renewal cost</span><strong>{tier.renewalCost}</strong></div>
+                </div>
+              </article>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
