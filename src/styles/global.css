@@ -1,26 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'DM Sans', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
-  --color-ink: #05070d;
-  --color-mist: #edf4ff;
-  --color-teal: #2c6df3;
-  --color-lime: #9ec5ff;
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --color-ink: #17202a;
+  --color-mist: #fff7ed;
+  --color-teal: #e4572e;
+  --color-lime: #f4b942;
+  --color-blue-50: #fff7ed;
+  --color-blue-200: #fed7aa;
+  --color-blue-300: #fdba74;
+  --color-blue-400: #fb923c;
+  --color-blue-500: #f97316;
+  --color-blue-600: #ea580c;
+  --color-blue-700: #c2410c;
+  --color-emerald-50: #f0fdfa;
+  --color-emerald-200: #99f6e4;
+  --color-emerald-300: #5eead4;
+  --color-emerald-500: #14b8a6;
+  --color-emerald-600: #0d9488;
+  --color-emerald-700: #0f766e;
+  --color-emerald-800: #115e59;
+  --color-emerald-900: #134e4a;
 }
 
-:root { color-scheme: light; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: #f3f7ff; color: #05070d; font-family: var(--font-sans); }
-.font-display { font-family: var(--font-display); }
-.grid-paper { background-image: linear-gradient(#d6e7ff 1px, transparent 1px), linear-gradient(90deg, #d6e7ff 1px, transparent 1px); background-size: 34px 34px; }
-.text-balance { text-wrap: balance; }
+:root {
+  color-scheme: light;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #fffaf3;
+  color: #17202a;
+  font-family: var(--font-sans);
+}
+.font-display {
+  font-family: var(--font-display);
+}
+.grid-paper {
+  background-image:
+    linear-gradient(#f5d7b3 1px, transparent 1px),
+    linear-gradient(90deg, #f5d7b3 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+.text-balance {
+  text-wrap: balance;
+}
 
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-.float-slow { animation: float 6s ease-in-out infinite; }
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.float-slow {
+  animation: float 6s ease-in-out infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .float-slow { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+  .float-slow {
+    animation: none;
+  }
 }

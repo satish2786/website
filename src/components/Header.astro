@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 border-b border-ink/10 bg-[#edf4ff]/90 backdrop-blur-md">
+<header class="sticky top-0 z-50 border-b border-ink/10 bg-[#fff7ed]/90 backdrop-blur-md">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
     <a href="#top" class="font-display text-xl font-bold tracking-tight">e<span class="text-teal">Publishing</span></a>
     <details class="relative ml-auto mr-3 md:hidden">
@@ -8,17 +8,64 @@
         </svg>
       </summary>
       <nav class="absolute right-0 top-12 z-10 w-52 rounded-2xl border border-ink/10 bg-white p-3 text-sm font-semibold text-ink shadow-xl" aria-label="Mobile navigation">
-        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#products">Products</a>
-        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#epublishing">ePublishing</a>
-        <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#services">Services</a>
+        <details class="group">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal">Products <span class="text-xs transition group-open:rotate-180">&#9662;</span></summary>
+          <div class="ml-3 border-l border-ink/10 pl-3 text-sm font-medium">
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="/products/web-app">Web App</a>
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="/products/mobile-app">Mobile App</a>
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="/products/desktop-app">Desktop App</a>
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#products">Bundle App</a>
+            <details class="group/epub">
+              <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal">ePublishing <span class="text-xs transition group-open/epub:rotate-180">&#9662;</span></summary>
+              <div class="ml-3 border-l border-ink/10 pl-3 font-normal">
+                <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#epublishing">OCR Extraction</a>
+                <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#epublishing">Data Conversion</a>
+                <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#epublishing">ePub Creation</a>
+              </div>
+            </details>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal">Services <span class="text-xs transition group-open:rotate-180">&#9662;</span></summary>
+          <div class="ml-3 border-l border-ink/10 pl-3 text-sm font-medium">
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#services">Google Workspace</a>
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#services">Microsoft Azure</a>
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#services">Azure Cloud</a>
+            <a class="block rounded-lg px-3 py-2 hover:bg-blue-50 hover:text-teal" href="#services">AWS Cloud</a>
+          </div>
+        </details>
         <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#support">Support</a>
         <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#contact">Contact Us</a>
       </nav>
     </details>
     <nav class="hidden items-center gap-8 text-sm font-semibold text-ink/70 md:flex" aria-label="Main navigation">
-      <a class="transition hover:text-teal" href="#products">Products</a>
+      <div class="group relative">
+        <button class="inline-flex items-center gap-1 transition hover:text-teal" type="button">Products <span class="text-xs transition group-hover:rotate-180">&#9662;</span></button>
+        <div class="invisible absolute left-1/2 top-full z-20 mt-3 w-56 -translate-x-1/2 rounded-2xl border border-ink/10 bg-white p-2 text-sm text-ink opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="/products/web-app">Web App</a>
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="/products/mobile-app">Mobile App</a>
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="/products/desktop-app">Desktop App</a>
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#products">Bundle App</a>
+          <div class="group/epub relative">
+            <a class="flex items-center justify-between rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#epublishing">ePublishing <span class="text-xs">&#9656;</span></a>
+            <div class="invisible absolute left-full top-0 ml-2 w-48 rounded-2xl border border-ink/10 bg-white p-2 text-sm text-ink opacity-0 shadow-xl transition group-hover/epub:visible group-hover/epub:opacity-100 group-focus-within/epub:visible group-focus-within/epub:opacity-100">
+              <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#epublishing">OCR Extraction</a>
+              <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#epublishing">Data Conversion</a>
+              <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#epublishing">ePub Creation</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <a class="transition hover:text-teal" href="#epublishing">ePublishing</a>
-      <a class="transition hover:text-teal" href="#services">Services</a>
+      <div class="group relative">
+        <button class="inline-flex items-center gap-1 transition hover:text-teal" type="button">Services <span class="text-xs transition group-hover:rotate-180">&#9662;</span></button>
+        <div class="invisible absolute left-1/2 top-full z-20 mt-3 w-56 -translate-x-1/2 rounded-2xl border border-ink/10 bg-white p-2 text-sm text-ink opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#services">Google Workspace</a>
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#services">Microsoft Azure</a>
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#services">Azure Cloud</a>
+          <a class="block rounded-lg px-3 py-2.5 hover:bg-blue-50 hover:text-teal" href="#services">AWS Cloud</a>
+        </div>
+      </div>
       <a class="transition hover:text-teal" href="#support">Support</a>
       <a class="transition hover:text-teal" href="#contact">Contact Us</a>
       <a class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition hover:border-teal hover:text-teal" href="/order" aria-label="Open order cart">
