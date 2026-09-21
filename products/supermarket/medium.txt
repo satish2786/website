@@ -1,9 +1,0 @@
-Everything in Simple
-Multi-store inventory
-Purchase and supplier management
-Promotions and discount rules
-Staff accounts and permissions
-Sales and stock reports
-Barcode scanner integration
-Cost $299
-Renewal cost $199 / year

@@ -1,27 +1,33 @@
 ---
-const products = [
-  {
-    slug: 'desktop-app',
-    name: 'Desktop App',
+import { readdirSync } from 'fs';
+import { fileURLToPath } from 'url';
+
+const appDetails: Record<string, { tagline: string; intro: string; highlight: string }> = {
+  desktop: {
     tagline: 'Built for power users',
     intro: 'Streamline your workflow with a fast, focused desktop experience designed for teams that work at speed.',
-    highlight: 'Optimized for performance and precision.'
+    highlight: 'Optimized for performance and precision.',
   },
-  {
-    slug: 'web-app',
-    name: 'Web App',
+  web: {
     tagline: 'Fast access from anywhere',
     intro: 'Give customers and teams a seamless browser experience with flexible tools, secure access, and effortless collaboration.',
-    highlight: 'Designed for scale, clarity, and daily use.'
+    highlight: 'Designed for scale, clarity, and daily use.',
   },
-  {
-    slug: 'mobile-app',
-    name: 'Mobile App',
+  mobile: {
     tagline: 'Always in your pocket',
     intro: 'Keep your product close to customers with a mobile experience that is intuitive, responsive, and built for action.',
-    highlight: 'Built for engagement, speed, and convenience.'
+    highlight: 'Built for engagement, speed, and convenience.',
   },
-];
+};
+
+const productsFolder = fileURLToPath(new URL('../../products/', import.meta.url));
+const products = readdirSync(productsFolder, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory() && entry.name in appDetails)
+  .map((entry) => ({
+    slug: `${entry.name}-app`,
+    name: `${entry.name} app`.replace(/\b\w/g, (letter) => letter.toUpperCase()),
+    ...appDetails[entry.name],
+  }));
 ---
 
 <section id="products" class="bg-indigo-50/70 px-6 py-24 lg:px-10 lg:py-32">
@@ -33,7 +39,7 @@ const products = [
 
     <div class="mt-12 grid gap-6 lg:grid-cols-3">
       {products.map((product) => (
-        <a href={product.slug === 'desktop-app' ? '/products/desktop-app' : product.slug === 'web-app' ? '/products/web-app' : '/products/mobile-app'} class="group flex h-full flex-col rounded-[1.8rem] border border-indigo-100 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/10">
+        <a href={`/products/${product.slug}`} class="group flex h-full flex-col rounded-[1.8rem] border border-indigo-100 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/10">
           <div class="flex items-center justify-between">
             <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold uppercase tracking-[.14em] text-indigo-700">{product.tagline}</span>
             <span class="text-xl text-indigo-600 transition group-hover:translate-x-1" aria-hidden="true">→</span>

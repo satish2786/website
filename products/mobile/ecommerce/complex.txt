@@ -1,0 +1,7 @@
+Everything in Medium
+Multi-store support
+Loyalty program integration
+Real-time inventory sync
+Custom checkout workflows
+Cost Custom
+Renewal cost Custom

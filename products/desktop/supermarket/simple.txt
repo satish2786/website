@@ -1,0 +1,8 @@
+Product catalog management
+Inventory tracking
+Basic checkout workflow
+Customer accounts
+Promotion management
+Order history
+Cost $599
+Renewal cost $399 / year

@@ -1,8 +1,0 @@
-Product and material catalog
-Customer and supplier records
-Basic order management
-Stock quantity tracking
-Invoice creation
-Single-workshop support
-Cost $199
-Renewal cost $129 / year

@@ -1,8 +1,0 @@
-Product catalog and pricing
-Point-of-sale checkout
-Basic inventory tracking
-Customer records
-Daily sales summary
-Single-store support
-Cost $150
-Renewal cost $99 / year

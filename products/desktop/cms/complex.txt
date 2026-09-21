@@ -5,3 +5,5 @@ Custom content models
 Single sign-on integration
 API and third-party integrations
 Audit logs and enterprise permissions
+Cost $599
+Renewal cost $399 / year
